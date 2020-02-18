@@ -8,44 +8,54 @@
  * 
  */
 USTRUCT(BlueprintType)
-struct PROJECTORTUS_API UFCardInfo : public FTableRowBase
+struct PROJECTORTUS_API FCardInfo : public FTableRowBase
 {
 	GENERATED_BODY()
 
 public:
+	/** Default values */
+	FCardInfo()
+		:
+	CardTitle(""),
+	CardDescription(""),
+	CardRow1(""),
+	CardRow2(""),
+	CardRow3(""),
+	CardImgNoText(nullptr),
+	ImageTypeProduced(nullptr) {}
+	
 	/** Override values */
-	UFCardInfo(const FText CardTitle, 
-		const FText CardDescription, 
-		const FText CardRow1, 
-		const FText CardRow2, 
-		const FText CardRow3, 
-		const UTexture2D* CardImgNoText, 
-		const UTexture2D* ImageTypeProduced)
+	FCardInfo(const FString CardTitle, const FString CardDescription, 
+		const FString CardRow1, const FString CardRow2, const FString CardRow3, 
+		const UTexture2D* CardImgNoText, const UTexture2D* ImageTypeProduced)
 		:
 	CardTitle(CardTitle),
 	CardDescription(CardDescription),
-	CardRow1(CardRow1), CardRow2(CardRow2), CardRow3(CardRow3),
-	CardImgNoText(CardImgNoText), ImageTypeProduced(ImageTypeProduced) {}
+	CardRow1(CardRow1),
+	CardRow2(CardRow2),
+	CardRow3(CardRow3),
+	CardImgNoText(CardImgNoText),
+	ImageTypeProduced(ImageTypeProduced) {}
 	
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FText CardTitle;
+	FString CardTitle;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FText CardDescription;
+	FString CardDescription;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FText CardRow1;
+	FString CardRow1;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FText CardRow2;
+	FString CardRow2;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FText CardRow3;
+	FString CardRow3;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)

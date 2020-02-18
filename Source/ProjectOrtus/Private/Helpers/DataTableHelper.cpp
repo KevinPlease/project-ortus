@@ -1,19 +1,45 @@
-
-
-
 #include "Helpers/DataTableHelper.h"
 
-static TArray<UFCardInfo> GetCardInfoForSector(UDataTable* DataTable)
+TArray<FTableRowBase> UDataTableHelper::GetRowsFromDataTable(UDataTable* CardsDataTable)
 {
-	TArray<UFCardInfo> CardInfos = TArray<UFCardInfo>();
+	TArray<FTableRowBase> CardInfos;
+	if (!IsValid(CardsDataTable)) return CardInfos;
 	
-	if (DataTable->GetRowStructName() != "UFCardInfo") return CardInfos;
 	
-	static const FString ContextString(TEXT("Struct CardInfo Context"));
-	DataTable->ForeachRow<UFCardInfo>(ContextString, [&](const FName Key, const UFCardInfo CardInfo)
+	static const FString ContextString(TEXT("Struct Context"));
+	CardsDataTable->ForeachRow<FTableRowBase>(ContextString, [&](const FName Key, const FTableRowBase CardInfo)
 	{
 		CardInfos.Add(CardInfo);
 	});
+	return CardInfos;
+}
 
+TArray<FCardInfo> UDataTableHelper::GetCardsInfoFromDataTable(UDataTable* CardsDataTable)
+{
+	TArray<FCardInfo> CardInfos;
+	if (!IsValid(CardsDataTable)) return CardInfos;
+	
+	if (CardsDataTable->GetRowStructName() != "FCardInfo") return CardInfos;
+
+	static const FString ContextString(TEXT("Struct CardInfo Context"));
+	CardsDataTable->ForeachRow<FCardInfo>(ContextString, [&](const FName Key, const FCardInfo CardInfo)
+		{
+			CardInfos.Add(CardInfo);
+		});
+	return CardInfos;
+}
+
+TArray<FIndustryStruct> UDataTableHelper::GetSectorsInfoFromDataTable(UDataTable* SectorsDataTable)
+{
+	TArray<FIndustryStruct> CardInfos;
+	if (!IsValid(SectorsDataTable)) return CardInfos;
+	
+	if (SectorsDataTable->GetRowStructName() != "FSectorInfo") return CardInfos;
+
+	static const FString ContextString(TEXT("Struct SectorInfo Context"));
+	SectorsDataTable->ForeachRow<FIndustryStruct>(ContextString, [&](const FName Key, const FIndustryStruct SectorInfo)
+		{
+			CardInfos.Add(SectorInfo);
+		});
 	return CardInfos;
 }

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
 #include "Data/FCardInfo.h"
+#include "Data/FIndustryStruct.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "DataTableHelper.generated.h"
 
@@ -17,5 +18,14 @@ class PROJECTORTUS_API UDataTableHelper : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
-	static const TArray<UFCardInfo> GetCardInfosFromDataTable(UDataTable* DataTable);
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "Data Table Helpers")
+	static TArray<FCardInfo> GetCardsInfoFromDataTable(UDataTable* CardsDataTable);
+
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "Data Table Helpers")
+	static TArray<FIndustryStruct> GetSectorsInfoFromDataTable(UDataTable* SectorsDataTable);
+
+private:
+	static TArray<FTableRowBase> GetRowsFromDataTable(UDataTable* CardsDataTable);
 };
