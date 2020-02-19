@@ -6,6 +6,7 @@
 #include "Engine/DataTable.h"
 #include "Data/FCardInfo.h"
 #include "Data/FIndustryStruct.h"
+#include "Data/FSectorStruct.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "DataTableHelper.generated.h"
 
@@ -24,7 +25,11 @@ public:
 
 	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Data Table Helpers")
-	static TArray<FIndustryStruct> GetSectorsInfoFromDataTable(UDataTable* SectorsDataTable);
+	static TArray<FIndustryStruct> GetIndustriesInfoFromDataTable(UDataTable* SectorsDataTable);
+
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "Data Table Helpers")
+	static TArray<FSectorStruct> GetSectorsInfoFromDataTable(UDataTable* AllSectorsDataTable);
 
 private:
 	static TArray<FTableRowBase> GetRowsFromDataTable(UDataTable* CardsDataTable);

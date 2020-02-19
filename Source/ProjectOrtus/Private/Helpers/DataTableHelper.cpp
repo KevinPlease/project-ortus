@@ -16,30 +16,39 @@ TArray<FTableRowBase> UDataTableHelper::GetRowsFromDataTable(UDataTable* CardsDa
 
 TArray<FCardInfo> UDataTableHelper::GetCardsInfoFromDataTable(UDataTable* CardsDataTable)
 {
-	TArray<FCardInfo> CardInfos;
-	if (!IsValid(CardsDataTable)) return CardInfos;
-	
-	if (CardsDataTable->GetRowStructName() != "FCardInfo") return CardInfos;
+	TArray<FCardInfo> CardsInfo;
+	if (!IsValid(CardsDataTable)) return CardsInfo;
 
-	static const FString ContextString(TEXT("Struct CardInfo Context"));
+	static const FString ContextString(TEXT("Struct Card Context"));
 	CardsDataTable->ForeachRow<FCardInfo>(ContextString, [&](const FName Key, const FCardInfo CardInfo)
-		{
-			CardInfos.Add(CardInfo);
-		});
-	return CardInfos;
+	{
+		CardsInfo.Add(CardInfo);
+	});
+	return CardsInfo;
 }
 
-TArray<FIndustryStruct> UDataTableHelper::GetSectorsInfoFromDataTable(UDataTable* SectorsDataTable)
+TArray<FIndustryStruct> UDataTableHelper::GetIndustriesInfoFromDataTable(UDataTable* SectorsDataTable)
 {
-	TArray<FIndustryStruct> CardInfos;
-	if (!IsValid(SectorsDataTable)) return CardInfos;
-	
-	if (SectorsDataTable->GetRowStructName() != "FSectorInfo") return CardInfos;
+	TArray<FIndustryStruct> IndustryStructs;
+	if (!IsValid(SectorsDataTable)) return IndustryStructs;
 
-	static const FString ContextString(TEXT("Struct SectorInfo Context"));
+	static const FString ContextString(TEXT("Struct Industry Context"));
 	SectorsDataTable->ForeachRow<FIndustryStruct>(ContextString, [&](const FName Key, const FIndustryStruct SectorInfo)
-		{
-			CardInfos.Add(SectorInfo);
-		});
-	return CardInfos;
+	{
+		IndustryStructs.Add(SectorInfo);
+	});
+	return IndustryStructs;
+}
+
+TArray<FSectorStruct> UDataTableHelper::GetSectorsInfoFromDataTable(UDataTable* AllSectorsDataTable)
+{
+	TArray<FSectorStruct> SectorStructs;
+	if (!IsValid(AllSectorsDataTable)) return SectorStructs;
+
+	static const FString ContextString(TEXT("Struct Sector Context"));
+	AllSectorsDataTable->ForeachRow<FSectorStruct>(ContextString, [&](const FName Key, const FSectorStruct SectorInfo)
+	{
+		SectorStructs.Add(SectorInfo);
+	});
+	return SectorStructs;
 }
