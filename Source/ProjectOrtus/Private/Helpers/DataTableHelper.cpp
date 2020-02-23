@@ -52,3 +52,16 @@ TArray<FSectorStruct> UDataTableHelper::GetSectorsInfoFromDataTable(UDataTable* 
 	});
 	return SectorStructs;
 }
+
+TArray<FCountryStruct> UDataTableHelper::GetCountriesInfoFromDataTable(UDataTable* CountriesStatsDataTable)
+{
+	TArray<FCountryStruct> CountryStructs;
+	if (!IsValid(CountriesStatsDataTable)) return CountryStructs;
+
+	static const FString ContextString(TEXT("Struct Country Context"));
+	CountriesStatsDataTable->ForeachRow<FCountryStruct>(ContextString, [&](const FName Key, const FCountryStruct CountryInfo)
+		{
+			CountryStructs.Add(CountryInfo);
+		});
+	return CountryStructs;
+}
