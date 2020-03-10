@@ -1,7 +1,8 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
-#include "DataTableEditor/Private/SRowEditor.h"
+#include "Engine/DataTable.h"
+#include "Engine/Texture2D.h"
 #include "FSectorStruct.generated.h"
 
 /**

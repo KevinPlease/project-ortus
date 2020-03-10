@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "DataTableEditor/Private/SRowEditor.h"
+#include "Engine/DataTable.h"
 #include "FCountryStruct.generated.h"
 
 /**
