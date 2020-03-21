@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
+#include "Engine/Texture2D.h"
 #include "FCountryStruct.generated.h"
 
 /**
@@ -14,16 +15,18 @@ struct PROJECTORTUS_API FCountryStruct : public FTableRowBase
 	
 public:
 	/** Default values */
-	FCountryStruct() : Name(""), Population(0), Budget(0.0f), Income(0.0f), Happiness(0.0f) {}
+	FCountryStruct() : Name(""), Population(0), Budget(0.0f), Income(0.0f), Rating(0.0f), Happiness(0.0f), CountryIcon(nullptr) {}
 
 	/** Override values */
-	FCountryStruct(const FString NewName, const int64 NewPopulation, const float NewBudget, const float NewIncome, const float NewHappiness)
+	FCountryStruct(const FString NewName, const int32 NewPopulation, const float NewBudget, const float NewIncome, const float NewRating, const float NewHappiness, UTexture2D* NewCountryIcon)
 	:
 	Name(NewName),
 	Population(NewPopulation),
 	Budget(NewBudget),
 	Income(NewIncome),
-	Happiness(NewHappiness) {}
+	Rating(NewRating),
+	Happiness(NewHappiness),
+	CountryIcon(NewCountryIcon) {}
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -31,7 +34,7 @@ public:
 	
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int64 Population;
+	int32 Population;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -43,5 +46,13 @@ public:
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Rating;
+	
+	/** TODO */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Happiness;
+
+	/** TODO */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UTexture2D* CountryIcon;
 };
