@@ -27,17 +27,17 @@ TArray<FCardInfo> UDataTableHelper::GetCardsInfoFromDataTable(UDataTable* CardsD
 	return CardsInfo;
 }
 
-TArray<FIndustryStruct> UDataTableHelper::GetIndustriesInfoFromDataTable(UDataTable* SectorsDataTable)
+TArray<FServiceStruct> UDataTableHelper::GetServicesInfoFromDataTable(UDataTable* SectorsDataTable)
 {
-	TArray<FIndustryStruct> IndustryStructs;
-	if (!IsValid(SectorsDataTable)) return IndustryStructs;
+	TArray<FServiceStruct> ServiceStructs;
+	if (!IsValid(SectorsDataTable)) return ServiceStructs;
 
-	static const FString ContextString(TEXT("Struct Industry Context"));
-	SectorsDataTable->ForeachRow<FIndustryStruct>(ContextString, [&](const FName Key, const FIndustryStruct SectorInfo)
+	static const FString ContextString(TEXT("Struct Service Context"));
+	SectorsDataTable->ForeachRow<FServiceStruct>(ContextString, [&](const FName Key, const FServiceStruct ServiceInfo)
 	{
-		IndustryStructs.Add(SectorInfo);
+		ServiceStructs.Add(ServiceInfo);
 	});
-	return IndustryStructs;
+	return ServiceStructs;
 }
 
 TArray<FSectorStruct> UDataTableHelper::GetSectorsInfoFromDataTable(UDataTable* AllSectorsDataTable)
@@ -64,4 +64,19 @@ TArray<FCountryStruct> UDataTableHelper::GetCountriesInfoFromDataTable(UDataTabl
 			CountryStructs.Add(CountryInfo);
 		});
 	return CountryStructs;
+}
+
+TArray<FServiceStruct> UDataTableHelper::GetSubServicesInfoForService(FString ServiceTitle)
+{
+	TArray<FServiceStruct> ServiceStructs;
+	ServiceTitle.RemoveSpacesInline();
+	const FString FileName = "DT_ServiceInfo_" + ServiceTitle;
+	const FString Path = "DataTable'/Game/Data/DataTables/" + ServiceTitle + "/" + FileName + "." + FileName + "'";
+	UDataTable* ServiceDataTable = LoadObject<UDataTable>(nullptr, *Path);
+
+	if (ServiceDataTable != nullptr)
+	{
+		ServiceStructs = GetServicesInfoFromDataTable(ServiceDataTable);
+	}
+	return ServiceStructs;
 }

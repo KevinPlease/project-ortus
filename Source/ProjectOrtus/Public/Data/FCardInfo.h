@@ -19,24 +19,22 @@ public:
 		:
 	CardTitle(""),
 	CardDescription(""),
-	CardRow1(""),
-	CardRow2(""),
-	CardRow3(""),
-	CardImgNoText(nullptr),
-	ImageTypeProduced(nullptr) {}
+	TotalBuilt(""),
+	ConstructionCost(""),
+	MaintenanceCost(""),
+	CardMainImg(nullptr) {}
 	
 	/** Override values */
 	FCardInfo(const FString CardTitle, const FString CardDescription, 
 		const FString CardRow1, const FString CardRow2, const FString CardRow3, 
-		const UTexture2D* CardImgNoText, const UTexture2D* ImageTypeProduced)
+		const UTexture2D* NewCardMainImg)
 		:
 	CardTitle(CardTitle),
 	CardDescription(CardDescription),
-	CardRow1(CardRow1),
-	CardRow2(CardRow2),
-	CardRow3(CardRow3),
-	CardImgNoText(CardImgNoText),
-	ImageTypeProduced(ImageTypeProduced) {}
+	TotalBuilt(CardRow1),
+	ConstructionCost(CardRow2),
+	MaintenanceCost(CardRow3),
+	CardMainImg(NewCardMainImg) {}
 	
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -48,21 +46,17 @@ public:
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString CardRow1;
+	FString TotalBuilt;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString CardRow2;
+	FString ConstructionCost;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString CardRow3;
+	FString MaintenanceCost;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	const UTexture2D* CardImgNoText;
-
-	/** TODO */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	const UTexture2D* ImageTypeProduced;
+	const UTexture2D* CardMainImg;
 };

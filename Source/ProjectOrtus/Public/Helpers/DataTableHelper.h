@@ -5,9 +5,10 @@
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
 #include "Data/FCardInfo.h"
-#include "Data/FIndustryStruct.h"
+#include "Data/FServiceStruct.h"
 #include "Data/FSectorStruct.h"
 #include "Data/FCountryStruct.h"
+#include "UObject/ConstructorHelpers.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "DataTableHelper.generated.h"
 
@@ -26,7 +27,7 @@ public:
 
 	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Data Table Helpers")
-	static TArray<FIndustryStruct> GetIndustriesInfoFromDataTable(UDataTable* SectorsDataTable);
+	static TArray<FServiceStruct> GetServicesInfoFromDataTable(UDataTable* SectorsDataTable);
 
 	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Data Table Helpers")
@@ -36,6 +37,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Data Table Helpers")
 	static TArray<FCountryStruct> GetCountriesInfoFromDataTable(UDataTable* CountriesStatsDataTable);
 
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "Data Table Helpers")
+	static TArray<FServiceStruct> GetSubServicesInfoForService(FString ServiceTitle);
+	
 private:
 	static TArray<FTableRowBase> GetRowsFromDataTable(UDataTable* CardsDataTable);
 };

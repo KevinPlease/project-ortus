@@ -1,2 +1,0 @@
-#include "Data/FIndustryStruct.h"
-
