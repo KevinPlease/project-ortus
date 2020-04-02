@@ -66,12 +66,13 @@ TArray<FCountryStruct> UDataTableHelper::GetCountriesInfoFromDataTable(UDataTabl
 	return CountryStructs;
 }
 
-TArray<FServiceStruct> UDataTableHelper::GetSubServicesInfoForService(FString ServiceTitle)
+TArray<FServiceStruct> UDataTableHelper::GetSubServicesInfoForService(FString SectorTitle, FString ServiceTitle)
 {
 	TArray<FServiceStruct> ServiceStructs;
+	SectorTitle.RemoveSpacesInline();
 	ServiceTitle.RemoveSpacesInline();
 	const FString FileName = "DT_ServiceInfo_" + ServiceTitle;
-	const FString Path = "DataTable'/Game/Data/DataTables/" + ServiceTitle + "/" + FileName + "." + FileName + "'";
+	const FString Path = "DataTable'/Game/Data/DataTables/" + SectorTitle  + "/" + ServiceTitle + "/" + FileName + "." + FileName + "'";
 	UDataTable* ServiceDataTable = LoadObject<UDataTable>(nullptr, *Path);
 
 	if (ServiceDataTable != nullptr)
@@ -79,4 +80,21 @@ TArray<FServiceStruct> UDataTableHelper::GetSubServicesInfoForService(FString Se
 		ServiceStructs = GetServicesInfoFromDataTable(ServiceDataTable);
 	}
 	return ServiceStructs;
+}
+
+TArray<FCardInfo> UDataTableHelper::GetCardsInfo(FString SectorTitle, FString ServiceTitle, FString SubServiceTitle)
+{
+	TArray<FCardInfo> CardStructs;
+	SectorTitle.RemoveSpacesInline();
+	ServiceTitle.RemoveSpacesInline();
+	SubServiceTitle.RemoveSpacesInline();
+	const FString FileName = "DT_CardsInfo_" + SubServiceTitle;
+	const FString Path = "DataTable'/Game/Data/DataTables/" + SectorTitle + "/" + ServiceTitle + "/" + FileName + "." + FileName + "'";
+	UDataTable* CardsDataTable = LoadObject<UDataTable>(nullptr, *Path);
+
+	if (CardsDataTable != nullptr)
+	{
+		CardStructs = GetCardsInfoFromDataTable(CardsDataTable);
+	}
+	return CardStructs;
 }

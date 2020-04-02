@@ -8,7 +8,6 @@
 #include "Data/FServiceStruct.h"
 #include "Data/FSectorStruct.h"
 #include "Data/FCountryStruct.h"
-#include "UObject/ConstructorHelpers.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "DataTableHelper.generated.h"
 
@@ -39,7 +38,11 @@ public:
 
 	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Data Table Helpers")
-	static TArray<FServiceStruct> GetSubServicesInfoForService(FString ServiceTitle);
+	static TArray<FServiceStruct> GetSubServicesInfoForService(FString SectorTitle, FString ServiceTitle);
+
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "Data Table Helpers")
+	static TArray<FCardInfo> GetCardsInfo(FString SectorTitle, FString ServiceTitle, FString SubServiceTitle);
 	
 private:
 	static TArray<FTableRowBase> GetRowsFromDataTable(UDataTable* CardsDataTable);
