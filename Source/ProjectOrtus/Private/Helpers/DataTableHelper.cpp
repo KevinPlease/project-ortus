@@ -89,7 +89,8 @@ TArray<FCardInfo> UDataTableHelper::GetCardsInfo(FString SectorTitle, FString Se
 	ServiceTitle.RemoveSpacesInline();
 	SubServiceTitle.RemoveSpacesInline();
 	const FString FileName = "DT_CardsInfo_" + SubServiceTitle;
-	const FString Path = "DataTable'/Game/Data/DataTables/" + SectorTitle + "/" + ServiceTitle + "/" + FileName + "." + FileName + "'";
+	FString Path = "DataTable'/Game/Data/DataTables/";
+	Path += SectorTitle + "/" + ServiceTitle + "/" + FileName + "." + FileName + "'";
 	UDataTable* CardsDataTable = LoadObject<UDataTable>(nullptr, *Path);
 
 	if (CardsDataTable != nullptr)
