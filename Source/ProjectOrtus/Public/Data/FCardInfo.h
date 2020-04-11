@@ -19,15 +19,15 @@ public:
 		:
 	CardTitle(""),
 	CardDescription(""),
-	TotalBuilt(""),
-	ConstructionCost(""),
-	MaintenanceCost(""),
+	TotalBuilt(0),
+	ConstructionCost(0.0f),
+	MaintenanceCost(0.0f),
 	CardMainImg(nullptr) {}
 	
 	/** Override values */
 	FCardInfo(const FString CardTitle, const FString CardDescription, 
-		const FString CardRow1, const FString CardRow2, const FString CardRow3, 
-		const UTexture2D* NewCardMainImg)
+		const int32 CardRow1, const float CardRow2, const float CardRow3,
+		UTexture2D* NewCardMainImg)
 		:
 	CardTitle(CardTitle),
 	CardDescription(CardDescription),
@@ -46,17 +46,17 @@ public:
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString TotalBuilt;
+	int32 TotalBuilt;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString ConstructionCost;
+	float ConstructionCost;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString MaintenanceCost;
+	float MaintenanceCost;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	const UTexture2D* CardMainImg;
+	UTexture2D* CardMainImg;
 };

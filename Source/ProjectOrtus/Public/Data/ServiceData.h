@@ -3,20 +3,20 @@
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
 #include "Engine/Texture2D.h"
-#include "FServiceStruct.generated.h"
+#include "ServiceData.generated.h"
 
 /**
  * 
  */
 USTRUCT(BlueprintType)
-struct PROJECTORTUS_API FServiceStruct : public FTableRowBase
+struct PROJECTORTUS_API FServiceData : public FTableRowBase
 {
 	GENERATED_BODY()
 
 public:
 	/** Default values */
-	FServiceStruct() : ServiceTitle(""), ServiceDescription(""), ServiceImg(nullptr) {}
-	
+	FServiceData() : ServiceTitle(""), ServiceDescription(""), ServiceImg(nullptr) {}
+
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FString ServiceTitle;
@@ -24,8 +24,8 @@ public:
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FString ServiceDescription;
-	
+
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	UTexture2D* ServiceImg;
+	const UTexture2D* ServiceImg;
 };

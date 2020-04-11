@@ -24,8 +24,8 @@ public:
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FString SectorDescription;
-
+	
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	const UTexture2D* SectorImg;
+	UTexture2D* SectorImg;
 };
