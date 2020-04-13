@@ -22,3 +22,14 @@ UTexture2D* USubService::GetImage() const
 {
 	return SubServiceStruct.ServiceImg;
 }
+
+void USubService::UpdateCard(USubServiceCard* SubServiceCard)
+{
+	FString Title = SubServiceCard->GetTitle();
+	const int32 Index = CardsList.IndexOfByPredicate([Title](const USubServiceCard* Card)
+		{
+			return Title == Card->GetTitle();
+		});
+	delete CardsList[Index];
+	CardsList[Index] = SubServiceCard;
+}

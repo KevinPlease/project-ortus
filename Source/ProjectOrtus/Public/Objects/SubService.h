@@ -33,7 +33,13 @@ public:
 	UFUNCTION(BlueprintPure, Category = "SubServices")
 	UTexture2D* GetImage() const;
 
+	/** TODO: */
+	UFUNCTION(BlueprintPure, Category = "SubServices")
 	TArray<USubServiceCard*> GetAllCards() const { return CardsList; }
+
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "SubServices")
+	void UpdateCard(USubServiceCard* SubServiceCard);
 	
 	/** TODO: */
 	void SetSubServiceStruct(FServiceStruct Struct) { SubServiceStruct = Struct; }

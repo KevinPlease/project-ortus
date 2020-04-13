@@ -8,7 +8,11 @@
 #include "Data/FServiceStruct.h"
 #include "Data/FCountryStruct.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "Objects/Service.h"
 #include "Sector.h"
+#include "Objects/ArmyService.h"
+#include "Objects/ArmySector.h"
+#include "Objects/SubService.h"
 #include "DataTableHelper.generated.h"
 
 /**
@@ -22,7 +26,7 @@ class PROJECTORTUS_API UDataTableHelper : public UBlueprintFunctionLibrary
 public:
 	/** Creates Sector objects -- loads all Services, SubServices and Cards for each sector. */
 	UFUNCTION(BlueprintCallable, Category = "Sectors")
-	static TArray<USector*> CreateSectors(UDataTable* SectorsDataTable);
+	static TArray<UBasicSector*> CreateSectors(UDataTable* SectorsDataTable);
 	
 	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "SubService Cards")
@@ -55,9 +59,12 @@ public:
 private:
 	/** TODO: */
 	static TArray<FTableRowBase> GetRowsFromDataTable(UDataTable* CardsDataTable);
-
+	
 	/** TODO: */
 	static TArray<UService*> CreateServices(FString SectorTitle);
+
+	/** Special case of Service with no SUbServices */
+	static TArray<UArmyService*> CreateArmyServices(FString SectorTitle);
 
 	/** TODO: */
 	static TArray<USubService*> CreateSubServices(FString SectorTitle, FString ServiceTitle);

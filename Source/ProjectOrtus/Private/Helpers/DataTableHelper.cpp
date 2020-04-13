@@ -16,14 +16,27 @@ TArray<FTableRowBase> UDataTableHelper::GetRowsFromDataTable(UDataTable* CardsDa
 
 TArray<UService*> UDataTableHelper::CreateServices(const FString SectorTitle)
 {
-	TArray<UService*> Sectors;
+	TArray<UService*> Services;
 	for (const FServiceStruct ServiceStruct : GetServicesInfoForSector(SectorTitle))
 	{
 		UService* Service = UService::CreateService(ServiceStruct);
 		Service->SetSubServices(CreateSubServices(SectorTitle, ServiceStruct.ServiceTitle));
-		Sectors.Add(Service);
+		Services.Add(Service);
+		UE_LOG(LogTemp, Log, TEXT("Added"));
 	}
-	return Sectors;
+	return Services;
+}
+
+TArray<UArmyService*> UDataTableHelper::CreateArmyServices(const FString SectorTitle)
+{
+	TArray<UArmyService*> Services;
+	for (const FServiceStruct ServiceStruct : GetServicesInfoForSector(SectorTitle))
+	{
+		UArmyService* ArmyService = UArmyService::CreateArmyService(ServiceStruct);
+		ArmyService->SetSubServiceCards(CreateSubServiceCards(SectorTitle, ServiceStruct.ServiceTitle, ServiceStruct.ServiceTitle));
+		Services.Add(ArmyService);
+	}
+	return Services;
 }
 
 TArray<USubService*> UDataTableHelper::CreateSubServices(const FString SectorTitle, const FString ServiceTitle)
@@ -48,14 +61,22 @@ TArray<USubServiceCard*> UDataTableHelper::CreateSubServiceCards(const FString S
 	return SubServiceCards;
 }
 
-TArray<USector*> UDataTableHelper::CreateSectors(UDataTable* SectorsDataTable)
+TArray<UBasicSector*> UDataTableHelper::CreateSectors(UDataTable* SectorsDataTable)
 {
-	TArray<USector*> Sectors;
+	TArray<UBasicSector*> Sectors;
 	for (const FSectorStruct SectorStruct : GetSectorsInfoFromDataTable(SectorsDataTable))
 	{
-		USector* Sector = USector::CreateSector(SectorStruct);
-		Sector->SetServices(CreateServices(SectorStruct.SectorTitle));
-		Sectors.Add(Sector);
+		if (SectorStruct.SectorTitle == "Army")
+		{
+			UArmySector* Sector = UArmySector::CreateArmySector(SectorStruct);
+			Sector->SetServices(CreateArmyServices(SectorStruct.SectorTitle));
+			Sectors.Add(Sector);
+		} else
+		{
+			USector* Sector = USector::CreateSector(SectorStruct);
+			Sector->SetServices(CreateServices(SectorStruct.SectorTitle));
+			Sectors.Add(Sector);
+		}
 	}
 	return Sectors;
 }
@@ -78,7 +99,7 @@ TArray<FSectorStruct> UDataTableHelper::GetSectorsInfoFromDataTable(UDataTable* 
 	TArray<FSectorStruct> SectorsStructs;
 	if (!IsValid(SectorsDataTable)) return SectorsStructs;
 
-	static const FString ContextString(TEXT("Struct Service Context"));
+	static const FString ContextString(TEXT("Struct Sector Context"));
 	SectorsDataTable->ForeachRow<FSectorStruct>(ContextString, [&](const FName Key, const FSectorStruct SectorInfo)
 		{
 			SectorsStructs.Add(SectorInfo);

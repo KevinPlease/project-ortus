@@ -42,6 +42,18 @@ public:
 	UFUNCTION(BlueprintPure, Category = "SubService Card")
 	UTexture2D* GetMainImg() const { return CardStruct.CardMainImg; }
 
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "SubService Card")
+	void SetTotalBuilt(int32 NewTotalBuilt) const { CardStruct.TotalBuilt = NewTotalBuilt; }
+
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "SubService Card")
+	void SetConstructionCost(float NewCost) const { CardStruct.ConstructionCost = NewCost; }
+
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "SubService Card")
+	void SetMaintenanceCost(float NewCost) const { CardStruct.MaintenanceCost = NewCost; }
+	
 	void SetCardStruct(const FCardInfo Struct) { CardStruct = Struct; }
 	
 private:

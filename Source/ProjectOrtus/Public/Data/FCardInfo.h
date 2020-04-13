@@ -25,8 +25,8 @@ public:
 	CardMainImg(nullptr) {}
 	
 	/** Override values */
-	FCardInfo(const FString CardTitle, const FString CardDescription, 
-		const int32 CardRow1, const float CardRow2, const float CardRow3,
+	FCardInfo(const FString CardTitle, const FString CardDescription,
+	    const int32 CardRow1, const float CardRow2, const float CardRow3,
 		UTexture2D* NewCardMainImg)
 		:
 	CardTitle(CardTitle),
@@ -46,15 +46,15 @@ public:
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 TotalBuilt;
+	mutable int32 TotalBuilt;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float ConstructionCost;
+	mutable float ConstructionCost;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float MaintenanceCost;
+	mutable float MaintenanceCost;
 
 	/** TODO */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
