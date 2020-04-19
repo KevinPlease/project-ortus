@@ -55,6 +55,14 @@ public:
 	void SetMaintenanceCost(float NewCost) const { CardStruct.MaintenanceCost = NewCost; }
 	
 	void SetCardStruct(const FCardInfo Struct) { CardStruct = Struct; }
+
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "SubService Card")
+	void Build();
+
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "SubService Card")
+	void Destroy();
 	
 private:
 	FCardInfo CardStruct;

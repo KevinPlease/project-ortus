@@ -6,3 +6,14 @@ UService* UService::CreateService(const FServiceStruct ServiceStruct)
 	Service->SetServiceStruct(ServiceStruct);
 	return Service;
 }
+
+void UService::UpdateSubService(USubService* SubService)
+{
+	FString Title = SubService->GetTitle();
+	const int32 Index = SubServicesList.IndexOfByPredicate([Title](const USubService* SubServiceElement)
+		{
+			return Title == SubServiceElement->GetTitle();
+		});
+	delete SubServicesList[Index];
+	SubServicesList[Index] = SubService;
+}

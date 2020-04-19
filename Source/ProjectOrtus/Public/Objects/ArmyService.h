@@ -29,6 +29,10 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Services")
 	TArray<USubServiceCard*> GetAllSubServiceCards() const { return SubServiceCardsList; }
 
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "Services")
+	void UpdateSubServiceCard(USubServiceCard* SubServiceCard);
+	
 private:
 
 	/** TODO */

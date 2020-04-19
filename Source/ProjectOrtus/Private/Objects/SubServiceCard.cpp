@@ -6,3 +6,13 @@ USubServiceCard* USubServiceCard::CreateSubServiceCard(const FCardInfo CardInfo)
 	SubServiceCard->SetCardStruct(CardInfo);
 	return SubServiceCard;
 }
+
+void USubServiceCard::Build()
+{
+	SetTotalBuilt(GetTotalBuilt() + 1);
+}
+
+void USubServiceCard::Destroy()
+{
+	SetTotalBuilt(GetTotalBuilt() - 1);
+}

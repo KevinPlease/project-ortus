@@ -29,6 +29,10 @@ public:
 	/** TODO: */
 	UFUNCTION(BlueprintPure, Category = "Sectors")
 	TArray<UService*> GetAllServices() const { return ServicesList; }
+
+	/** TODO: */
+	UFUNCTION(BlueprintCallable, Category = "Sectors")
+	void UpdateService(UService* Service);
 	
 private:
 	/** TODO */
