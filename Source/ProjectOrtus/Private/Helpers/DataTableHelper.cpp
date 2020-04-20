@@ -61,6 +61,16 @@ TArray<USubServiceCard*> UDataTableHelper::CreateSubServiceCards(const FString S
 	return SubServiceCards;
 }
 
+TArray<UCountry*> UDataTableHelper::CreateCountries(UDataTable* CountriesDataTable)
+{
+	TArray<UCountry*> Countries;
+	for (const FCountryStruct CountryStruct: GetCountriesInfoFromDataTable(CountriesDataTable))
+	{
+		Countries.Add(UCountry::CreateCountry(CountryStruct));
+	}
+	return Countries;
+}
+
 TArray<UBasicSector*> UDataTableHelper::CreateSectors(UDataTable* SectorsDataTable)
 {
 	TArray<UBasicSector*> Sectors;

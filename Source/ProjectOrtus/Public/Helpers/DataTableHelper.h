@@ -13,6 +13,7 @@
 #include "Objects/ArmyService.h"
 #include "Objects/ArmySector.h"
 #include "Objects/SubService.h"
+#include "Objects/Country.h"
 #include "DataTableHelper.generated.h"
 
 /**
@@ -24,7 +25,11 @@ class PROJECTORTUS_API UDataTableHelper : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
-	/** Creates Sector objects -- loads all Services, SubServices and Cards for each sector. */
+	/** Creates Country objects -- returns all countries information. */
+	UFUNCTION(BlueprintCallable, Category = "Countries")
+	static TArray<UCountry*> CreateCountries(UDataTable* CountriesDataTable);
+	
+	/** Creates Sector objects -- returns all Services, SubServices and Cards for each sector. */
 	UFUNCTION(BlueprintCallable, Category = "Sectors")
 	static TArray<UBasicSector*> CreateSectors(UDataTable* SectorsDataTable);
 	
