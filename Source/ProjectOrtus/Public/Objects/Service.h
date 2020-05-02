@@ -20,7 +20,7 @@ class PROJECTORTUS_API UService : public UBasicService
 public:
 	/** Create new Service Object */
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Create Service"), Category = "Services")
-	static UService* CreateService(FServiceStruct ServiceStruct);
+	static UService* CreateService(FServiceStruct Struct);
 	
 	/** TODO: */
 	void SetSubServices(TArray<USubService*> SubServices) { SubServicesList = SubServices; }
@@ -28,14 +28,10 @@ public:
 	/** TODO: */
 	UFUNCTION(BlueprintPure, Category = "Services")
 	TArray<USubService*> GetAllSubServices() const { return SubServicesList; }
-	
-	/** TODO: */
-	UFUNCTION(BlueprintCallable, Category = "Services")
-	void UpdateSubService(USubService* SubService);
 
 private:
 	/** TODO */
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY()
 	TArray<USubService*> SubServicesList;
 
 };

@@ -20,73 +20,60 @@ public:
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Create Country"), Category = "Countries")
 	static UCountry* CreateCountry(FCountryStruct CountryStruct);
 	
-	/** TODO: */
 	UFUNCTION(BlueprintPure, Category = "Countries")
 	FString GetCountryName() const { return CountryStruct.Name; }
-
-	/** TODO: */
+	
 	UFUNCTION(BlueprintPure, Category = "Countries")
 	int32 GetPopulation() const { return CountryStruct.Population; }
-
-	/** TODO: */
+	
 	UFUNCTION(BlueprintPure, Category = "Countries")
 	float GetBudget() const { return CountryStruct.Budget; }
-
-	/** TODO: */
+	
 	UFUNCTION(BlueprintPure, Category = "Countries")
 	float GetIncome() const { return CountryStruct.Income; }
-
-	/** TODO: */
+	
 	UFUNCTION(BlueprintPure, Category = "Countries")
 	float GetRating() const { return CountryStruct.Rating; }
 
-	/** TODO: */
 	UFUNCTION(BlueprintPure, Category = "Countries")
 	float GetHappiness() const { return CountryStruct.Happiness; }
 
-	/** TODO: */
 	UFUNCTION(BlueprintPure, Category = "Countries")
 	UTexture2D* GetIcon() const { return CountryStruct.CountryIcon; }
 
-	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void IncreasePopulation(int32 IncreaseBy);
 
-	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void DecreasePopulation(int32 DecreaseBy);
 	
-	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void IncreaseBudget(float IncreaseBy);
 
-	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void DecreaseBudget(float DecreaseBy);
 
-	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void IncreaseIncome(float IncreaseBy);
 
-	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void DecreaseIncome(float DecreaseBy);
 
-	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void IncreaseRating(float IncreaseBy);
 
-	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void DecreaseRating(float DecreaseBy);
 
-	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void IncreaseHappiness(float IncreaseBy);
 
-	/** TODO: */
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void DecreaseHappiness(float DecreaseBy);
+
+	/** Updates the Budget by using the Income as variable */
+	UFUNCTION(BlueprintCallable, Category = "Countries")
+	void UpdateBudget();
 	
 	/*
 		void SetCountryStruct(const FCountryStruct Struct) { CountryStruct = Struct; }
@@ -106,5 +93,6 @@ public:
 	
 private:
 	/** TODO */
+	UPROPERTY()
 	FCountryStruct CountryStruct;
 };

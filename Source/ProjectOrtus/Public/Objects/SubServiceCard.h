@@ -65,5 +65,6 @@ public:
 	void Destroy();
 	
 private:
+	UPROPERTY()
 	FCardInfo CardStruct;
 };

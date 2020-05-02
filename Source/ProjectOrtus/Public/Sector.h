@@ -21,18 +21,14 @@ class PROJECTORTUS_API USector : public UBasicSector
 public:
 	/** Create new Sector Object */
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Create Sector"), Category = "Sectors")
-	static USector* CreateSector(FSectorStruct SectorStruct);
+	static USector* CreateSector(FSectorStruct Struct);
 
 	/** TODO: */
 	void SetServices(TArray<UService*> Services) { ServicesList = Services; }
 
 	/** TODO: */
 	UFUNCTION(BlueprintPure, Category = "Sectors")
-	TArray<UService*> GetAllServices() const { return ServicesList; }
-
-	/** TODO: */
-	UFUNCTION(BlueprintCallable, Category = "Sectors")
-	void UpdateService(UService* Service);
+	TArray<UService*> GetAllServices() const { return ServicesList;	}
 	
 private:
 	/** TODO */

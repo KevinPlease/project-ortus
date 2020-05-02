@@ -22,7 +22,6 @@ TArray<UService*> UDataTableHelper::CreateServices(const FString SectorTitle)
 		UService* Service = UService::CreateService(ServiceStruct);
 		Service->SetSubServices(CreateSubServices(SectorTitle, ServiceStruct.ServiceTitle));
 		Services.Add(Service);
-		UE_LOG(LogTemp, Log, TEXT("Added"));
 	}
 	return Services;
 }

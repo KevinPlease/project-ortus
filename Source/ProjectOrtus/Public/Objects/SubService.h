@@ -19,7 +19,7 @@ class PROJECTORTUS_API USubService : public UObject
 public:
 	/** Create new Sector Object */
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Create SubService"), Category = "SubServices")
-	static USubService* CreateService(FServiceStruct ServiceStruct);
+	static USubService* CreateService(FServiceStruct Struct);
 
 	/** TODO: */
 	UFUNCTION(BlueprintPure, Category = "SubServices")
@@ -36,10 +36,6 @@ public:
 	/** TODO: */
 	UFUNCTION(BlueprintPure, Category = "SubServices")
 	TArray<USubServiceCard*> GetAllCards() const { return CardsList; }
-
-	/** TODO: */
-	UFUNCTION(BlueprintCallable, Category = "SubServices")
-	void UpdateCard(USubServiceCard* SubServiceCard);
 	
 	/** TODO: */
 	void SetSubServiceStruct(FServiceStruct Struct) { SubServiceStruct = Struct; }
@@ -49,6 +45,7 @@ public:
 
 private:
 	/** TODO */
+	UPROPERTY()
 	FServiceStruct SubServiceStruct;
 
 	/** TODO */

@@ -32,6 +32,7 @@ public:
 
 private:
 	/** TODO */
+	UPROPERTY()
 	FServiceStruct ServiceStruct;
 	
 };

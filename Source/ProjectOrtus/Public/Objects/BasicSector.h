@@ -33,5 +33,6 @@ public:
 	
 private:
 	/** TODO */
+	UPROPERTY()
 	FSectorStruct SectorStruct;
 };

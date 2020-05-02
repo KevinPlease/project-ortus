@@ -2,9 +2,9 @@
 
 USubServiceCard* USubServiceCard::CreateSubServiceCard(const FCardInfo CardInfo)
 {
-	USubServiceCard* SubServiceCard = NewObject<USubServiceCard>();
-	SubServiceCard->SetCardStruct(CardInfo);
-	return SubServiceCard;
+	USubServiceCard* ServicePtr = NewObject<USubServiceCard>();
+	ServicePtr->SetCardStruct(CardInfo);
+	return ServicePtr;
 }
 
 void USubServiceCard::Build()

@@ -1,10 +1,10 @@
 #include "Objects/SubService.h"
 
-USubService* USubService::CreateService(const FServiceStruct ServiceStruct)
+USubService* USubService::CreateService(const FServiceStruct Struct)
 {
-	USubService* SubService = NewObject<USubService>();
-	SubService->SetSubServiceStruct(ServiceStruct);
-	return SubService;
+	USubService* SubServicePtr = NewObject<USubService>();
+	SubServicePtr->SetSubServiceStruct(Struct);
+	return SubServicePtr;
 }
 
 // TODO: Move simple getters in .h file.
@@ -21,15 +21,4 @@ FString USubService::GetDescription() const
 UTexture2D* USubService::GetImage() const
 {
 	return SubServiceStruct.ServiceImg;
-}
-
-void USubService::UpdateCard(USubServiceCard* SubServiceCard)
-{
-	FString Title = SubServiceCard->GetTitle();
-	const int32 Index = CardsList.IndexOfByPredicate([Title](const USubServiceCard* Card)
-		{
-			return Title == Card->GetTitle();
-		});
-	delete CardsList[Index];
-	CardsList[Index] = SubServiceCard;
 }

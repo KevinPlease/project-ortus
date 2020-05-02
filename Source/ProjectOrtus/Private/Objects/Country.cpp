@@ -59,3 +59,8 @@ void UCountry::DecreaseHappiness(const float DecreaseBy)
 {
 	if (DecreaseBy > 0.0f) CountryStruct.Happiness -= DecreaseBy;
 }
+
+void UCountry::UpdateBudget()
+{
+	IncreaseBudget(GetIncome());
+}
