@@ -36,6 +36,10 @@ public:
 	/** TODO: */
 	UFUNCTION(BlueprintPure, Category = "SubServices")
 	TArray<USubServiceCard*> GetAllCards() const { return CardsList; }
+
+	/** TODO: */
+	UFUNCTION(BlueprintPure, Category = "SubServices")
+	float GetAllMaintenanceCosts();
 	
 	/** TODO: */
 	void SetSubServiceStruct(FServiceStruct Struct) { SubServiceStruct = Struct; }

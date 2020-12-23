@@ -9,3 +9,13 @@ UArmySector* UArmySector::CreateArmySector(const FSectorStruct Struct)
 	SectorRef->SetSectorStruct(Struct);
 	return SectorRef;
 }
+
+float UArmySector::GetAllMaintenanceCosts()
+{
+	float Costs = 0.0f;
+	for (UArmyService* Service : ServicesList)
+	{
+		Costs += Service->GetAllMaintenanceCosts();
+	}
+	return Costs;
+}

@@ -30,6 +30,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Sectors")
 	TArray<UArmyService*> GetAllServices() const { return ServicesList; }
 
+	/** TODO: */
+	float GetAllMaintenanceCosts() override;
+	
 private:
 
 	/** TODO */

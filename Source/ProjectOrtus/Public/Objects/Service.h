@@ -29,6 +29,10 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Services")
 	TArray<USubService*> GetAllSubServices() const { return SubServicesList; }
 
+	/** TODO: */
+	UFUNCTION(BlueprintPure, Category = "Services")
+	float GetAllMaintenanceCosts();
+	
 private:
 	/** TODO */
 	UPROPERTY()

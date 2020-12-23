@@ -29,6 +29,9 @@ public:
 	/** TODO: */
 	UFUNCTION(BlueprintPure, Category = "Sectors")
 	TArray<UService*> GetAllServices() const { return ServicesList;	}
+
+	/** TODO: */
+	float GetAllMaintenanceCosts() override;
 	
 private:
 	/** TODO */

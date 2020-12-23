@@ -51,7 +51,7 @@ public:
 	void IncreaseBudget(float IncreaseBy);
 
 	UFUNCTION(BlueprintCallable, Category = "Countries")
-	void DecreaseBudget(float DecreaseBy);
+	bool DecreaseBudget(float DecreaseBy);
 
 	UFUNCTION(BlueprintCallable, Category = "Countries")
 	void IncreaseIncome(float IncreaseBy);

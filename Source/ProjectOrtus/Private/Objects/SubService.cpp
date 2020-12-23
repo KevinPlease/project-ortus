@@ -22,3 +22,13 @@ UTexture2D* USubService::GetImage() const
 {
 	return SubServiceStruct.ServiceImg;
 }
+
+float USubService::GetAllMaintenanceCosts()
+{
+	float Costs = 0.0f;
+	for (USubServiceCard* Card : CardsList)
+	{
+		if (Card->GetTotalBuilt() > 0) Costs += Card->GetMaintenanceCost() * Card->GetTotalBuilt();
+	}
+	return Costs;
+}

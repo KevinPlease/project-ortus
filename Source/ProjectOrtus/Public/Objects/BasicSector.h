@@ -10,7 +10,7 @@
 /**
  * 
  */
-UCLASS(BlueprintType)
+UCLASS(BlueprintType, Abstract)
 class PROJECTORTUS_API UBasicSector : public UObject
 {
 	GENERATED_BODY()
@@ -28,6 +28,10 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Sectors")
 	UTexture2D* GetImage() const { return SectorStruct.SectorImg; }
 
+	/** TODO: */
+	UFUNCTION(BlueprintPure, Category = "Sectors")
+	virtual float GetAllMaintenanceCosts() PURE_VIRTUAL(UBasicSector::GetAllMaintenanceCosts, return 0.0f;);
+	
 	/** TODO: */
 	void SetSectorStruct(FSectorStruct Struct) { SectorStruct = Struct; }
 	

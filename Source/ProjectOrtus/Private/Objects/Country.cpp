@@ -25,9 +25,11 @@ void UCountry::IncreaseBudget(const float IncreaseBy)
 	if (IncreaseBy > 0.0f) CountryStruct.Budget += IncreaseBy;
 }
 
-void UCountry::DecreaseBudget(const float DecreaseBy)
+bool UCountry::DecreaseBudget(const float DecreaseBy)
 {
-	if (DecreaseBy > 0.0f) CountryStruct.Budget -= DecreaseBy;
+	const bool bSufficientBudget = GetBudget() >= DecreaseBy;
+	if (bSufficientBudget) CountryStruct.Budget -= DecreaseBy;
+	return bSufficientBudget;
 }
 
 void UCountry::IncreaseIncome(const float IncreaseBy)
